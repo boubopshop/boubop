@@ -66,18 +66,19 @@
     /* GRID */
 
     .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
+  justify-content: center;
+  gap: 30px;
+}
 
-    .collection-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      cursor: pointer;
-    }
+.collection-card {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
 
     .collection-card img {
       width: 100%;
@@ -110,7 +111,7 @@
     /* TEXT */
 
     .title {
-      font-size: 2rem;
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
