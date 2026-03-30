@@ -45,12 +45,12 @@ bubbles.forEach((bubble, i) => {
     bubbles.forEach((other, j) => {
       if (other === bubble) return;
 
+      const distance = Math.abs(j - i);
       const dir = j < i ? -1 : 1;
-      const offsetX = dir * 10;
-      const offsetY = 6;
+      const strength = distance === 1 ? 10 : 5;
 
-      other.style.setProperty("--push-x", `${offsetX}px`);
-      other.style.setProperty("--push-y", `${offsetY}px`);
+      other.style.setProperty("--push-x", `${dir * strength}px`);
+      other.style.setProperty("--push-y", `${distance === 1 ? 6 : 2}px`);
       other.style.setProperty("--scale", `0.97`);
     });
   });
