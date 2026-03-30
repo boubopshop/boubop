@@ -30,11 +30,22 @@ body {
   position: fixed;
   inset: -6%;
   z-index: 0;
+  transform: translate3d(0, 0, 0) scale(1.08);
+  will-change: transform;
+}
+
+/* homepage background */
+body.home .bg-layer {
   background:
     linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.38)),
     url("gradient.jpg") center center / cover no-repeat;
-  transform: translate3d(0, 0, 0) scale(1.08);
-  will-change: transform;
+}
+
+/* all other pages */
+body.subpage .bg-layer {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.38)),
+    url("pinkgradient.jpg") center center / cover no-repeat;
 }
 
 .background-overlay {
