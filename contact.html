@@ -2,158 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOUBOP — Contact</title>
-
+  <link rel="stylesheet" href="style.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .page {
+    .contact-page {
+      position: relative;
+      z-index: 2;
       min-height: 100vh;
-      padding: 24px;
+      padding: 26px 20px 40px;
+      color: white;
     }
 
-    /* NAV */
-
-    .topbar {
+    .contact-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 80px;
+      gap: 20px;
+      margin-bottom: 34px;
     }
 
-    .brand {
-      display: flex;
+    .contact-brand {
+      display: inline-flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
+      color: white;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .brand img {
-      width: 40px;
+    .contact-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
     }
 
-    .nav {
+    .contact-nav {
       display: flex;
-      gap: 18px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      font-weight: 700;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .nav a {
+    .contact-nav a {
       text-decoration: none;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .contact-nav a:hover,
+    .contact-nav a.active {
       color: white;
-      opacity: 0.7;
     }
 
-    .nav a:hover,
-    .nav a.active {
-      opacity: 1;
-    }
-
-    /* CONTENT */
-
-    .content {
-      max-width: 700px;
+    .contact-shell {
+      max-width: 760px;
       margin: 0 auto;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 28px;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow:
+        inset 0 1px 10px rgba(255,255,255,0.16),
+        0 20px 40px rgba(0,0,0,0.22);
+      padding: 30px;
       text-align: center;
     }
 
-    .content h1 {
-      font-size: 2.8rem;
-      margin-bottom: 30px;
+    .contact-eyebrow {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.62);
     }
 
-    .links {
+    .contact-shell h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .contact-shell p {
+      margin: 0 auto 24px;
+      max-width: 520px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+    }
+
+    .contact-links {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 16px;
+      align-items: center;
     }
 
-    .links a {
-      font-size: 1.4rem;
-      font-weight: 700;
+    .contact-links a {
+      min-width: 260px;
       text-decoration: none;
       color: white;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 16px 20px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow:
+        inset 0 1px 8px rgba(255,255,255,0.12),
+        0 14px 24px rgba(0,0,0,0.18);
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
     }
 
-    .links a:hover {
-      opacity: 0.6;
+    .contact-links a:hover {
       transform: translateY(-2px);
+      background: rgba(255,255,255,0.16);
+      border-color: rgba(255,255,255,0.32);
     }
 
-    .subtext {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.6);
-    }
+    @media (max-width: 720px) {
+      .contact-page {
+        padding: 20px 12px 28px;
+      }
 
+      .contact-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-shell {
+        padding: 24px 18px;
+      }
+
+      .contact-links a {
+        width: 100%;
+        min-width: 0;
+      }
+    }
   </style>
 </head>
+<body class="subpage">
+  <div class="bg-layer"></div>
+  <div class="background-overlay"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
 
-<body>
-
-  <main class="page">
-
-    <div class="topbar">
-      <a href="index.html" class="brand">
+  <main class="contact-page">
+    <header class="contact-topbar">
+      <a href="index.html" class="contact-brand">
         <img src="logo.png" alt="BOUBOP logo">
         <span>BOUBOP</span>
       </a>
 
-      <div class="nav">
+      <nav class="contact-nav">
         <a href="index.html">Home</a>
         <a href="ss25.html">SS25</a>
         <a href="archive.html">Archive</a>
         <a href="about.html">About</a>
         <a href="contact.html" class="active">Contact</a>
-      </div>
-    </div>
+      </nav>
+    </header>
 
-    <section class="content">
-
+    <section class="contact-shell">
+      <span class="contact-eyebrow">BOUBOP / Contact</span>
       <h1>Contact</h1>
+      <p>
+        For inquiries, collaborations, custom requests, or questions, use the links below.
+      </p>
 
-      <div class="links">
-        <!-- EMAIL -->
-        <a href="mailto:hello@boubop.com">
-          hello@boubop.com
-        </a>
-
-        <!-- INSTAGRAM -->
-        <a href="https://instagram.com/boubop_shop" target="_blank">
-          Instagram
-        </a>
-
-        <!-- ADD MORE IF YOU WANT -->
-        <!--
-        <a href="#">TikTok</a>
-        <a href="#">Press</a>
-        -->
+      <div class="contact-links">
+        <a href="mailto:hello@boubop.com">hello@boubop.com</a>
+        <a href="https://instagram.com/boubop_shop" target="_blank">@boubop_shop</a>
       </div>
-
-      <div class="subtext">
-        For inquiries, collaborations, or questions.
-      </div>
-
     </section>
-
   </main>
-
 </body>
 </html>
