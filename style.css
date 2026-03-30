@@ -118,7 +118,7 @@ body.subpage .bg-layer {
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.18));
 }
 
-/* VIDEO NOW VERTICAL */
+/* vertical phone-screen video */
 
 .video-wrap {
   width: min(420px, 88vw);
@@ -152,7 +152,7 @@ body.subpage .bg-layer {
   box-shadow: var(--video-shadow);
 }
 
-/* bubbles at top of video */
+/* bubbles on top of video */
 
 .bubble-menu {
   position: absolute;
@@ -253,7 +253,7 @@ body.subpage .bg-layer {
   pointer-events: none;
 }
 
-/* BRIGHTER PASTEL COLORS */
+/* brighter pastel colors */
 .bubble1 {
   margin-top: 2px;
   animation: float1 6.2s ease-in-out infinite;
