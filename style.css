@@ -37,7 +37,7 @@ body {
 body.home .bg-layer {
   background:
     linear-gradient(rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.30)),
-    url("gradient.jpg") center center / cover no-repeat;
+    url("Artboard 1gradient.jpg") center center / cover no-repeat;
 }
 
 body.subpage .bg-layer {
