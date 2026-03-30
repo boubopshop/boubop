@@ -4,155 +4,214 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOUBOP — Archive</title>
-
+  <link rel="stylesheet" href="style.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #000;
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .page {
+    .archive-page {
+      position: relative;
+      z-index: 2;
       min-height: 100vh;
-      padding: 24px;
+      padding: 26px 20px 40px;
+      color: white;
     }
 
-    /* NAV */
-
-    .topbar {
+    .archive-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 40px;
+      gap: 20px;
+      margin-bottom: 34px;
     }
 
-    .brand {
-      display: flex;
+    .archive-brand {
+      display: inline-flex;
       align-items: center;
       gap: 12px;
+      text-decoration: none;
+      color: white;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .brand img {
-      width: 40px;
+    .archive-brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
     }
 
-    .nav {
+    .archive-nav {
       display: flex;
-      gap: 18px;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      font-weight: 700;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .nav a {
+    .archive-nav a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .archive-nav a:hover,
+    .archive-nav a.active {
+      color: white;
+    }
+
+    .archive-intro {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .archive-eyebrow {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.62);
+    }
+
+    .archive-intro h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .archive-intro p {
+      margin: 0;
+      max-width: 620px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.78);
+      font-size: 1rem;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+      justify-content: start;
+      gap: 22px;
+    }
+
+    .archive-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      overflow: hidden;
       text-decoration: none;
       color: white;
-      opacity: 0.7;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow:
+        inset 0 1px 8px rgba(255,255,255,0.12),
+        0 20px 40px rgba(0,0,0,0.22);
+      backdrop-filter: blur(16px) saturate(135%);
+      -webkit-backdrop-filter: blur(16px) saturate(135%);
     }
 
-    .nav a:hover,
-    .nav a.active {
-      opacity: 1;
-    }
-
-    /* GRID */
-
-    .grid {
-  max-width: 800px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 220px));
-  justify-content: center;
-  gap: 30px;
-}
-
-.collection-card {
-  position: relative;
-  width: 220px;
-  height: 220px;
-}
-
-    .collection-card img {
+    .archive-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease;
+      transition: transform 0.35s ease, filter 0.35s ease;
     }
 
-    .collection-card:hover img {
-      transform: scale(1.05);
+    .archive-card:hover img {
+      transform: scale(1.04);
+      filter: brightness(0.72);
     }
 
-    /* DARK OVERLAY */
-
-    .overlay {
+    .archive-card::after {
+      content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.2);
-      transition: background 0.3s ease;
+      background:
+        radial-gradient(circle at 20% 16%, rgba(255,255,255,0.16), transparent 18%),
+        linear-gradient(135deg,
+          rgba(255,190,230,0.06),
+          rgba(170,240,255,0.05) 30%,
+          rgba(220,255,200,0.05) 65%,
+          rgba(255,255,255,0.04));
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .archive-overlay {
+      position: absolute;
+      inset: 0;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: end;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.58), rgba(0,0,0,0.08));
     }
 
-    .collection-card:hover .overlay {
-      background: rgba(0,0,0,0.6);
-    }
-
-    /* TEXT */
-
-    .title {
-      font-size: 1.4rem;
+    .archive-title {
+      font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      text-align: center;
     }
 
+    @media (max-width: 720px) {
+      .archive-page {
+        padding: 20px 12px 28px;
+      }
+
+      .archive-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .archive-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
+<body class="subpage">
+  <div class="bg-layer"></div>
+  <div class="background-overlay"></div>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
 
-<body>
-
-  <main class="page">
-
-    <div class="topbar">
-      <a href="index.html" class="brand">
+  <main class="archive-page">
+    <header class="archive-topbar">
+      <a href="index.html" class="archive-brand">
         <img src="logo.png" alt="BOUBOP logo">
         <span>BOUBOP</span>
       </a>
 
-      <div class="nav">
+      <nav class="archive-nav">
         <a href="index.html">Home</a>
         <a href="ss25.html">SS25</a>
         <a href="archive.html" class="active">Archive</a>
-        <a href="https://boubop.bigcartel.com/products" target="_blank">Shop</a>
-      </div>
-    </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-    <section class="grid">
-
-      <!-- SS25 COLLECTION CARD -->
-      <a href="ss25.html" class="collection-card">
-        <img src="promo2.JPG" alt="SS25 Collection">
-
-        <div class="overlay">
-          <div class="title">SS25</div>
-        </div>
-      </a>
-
+    <section class="archive-intro">
+      <span class="archive-eyebrow">BOUBOP / Collections</span>
+      <h1>Archive</h1>
+      <p>
+        A growing index of collections, campaigns, and small wearable worlds.
+      </p>
     </section>
 
+    <section class="archive-grid">
+      <a href="ss25.html" class="archive-card">
+        <img src="promo2.JPG" alt="SS25 Collection">
+        <div class="archive-overlay">
+          <div class="archive-title">SS25</div>
+        </div>
+      </a>
+    </section>
   </main>
-
 </body>
 </html>
