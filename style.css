@@ -369,6 +369,11 @@ body.subpage .bg-layer {
   50% { transform: translate(var(--push-x), calc(var(--push-y) - 5px)) scale(var(--scale)) rotate(0.9deg); }
 }
 
+@keyframes float6 {
+  0%, 100% { transform: translate(var(--push-x), calc(var(--push-y) + 0px)) scale(var(--scale)) rotate(0deg); }
+  50% { transform: translate(var(--push-x), calc(var(--push-y) - 6px)) scale(var(--scale)) rotate(-0.8deg); }
+}
+
 @keyframes ambientFloat1 {
   0%, 100% { transform: translate(0, 0); }
   50% { transform: translate(20px, -18px); }
