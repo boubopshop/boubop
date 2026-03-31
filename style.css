@@ -294,6 +294,14 @@ body.subpage .bg-layer {
     linear-gradient(145deg, rgba(135, 170, 88, 0.54), rgba(195, 220, 150, 0.16));
 }
 
+.bubble6 {
+  margin-top: 10px;
+  animation: float6 6.9s ease-in-out infinite;
+  background:
+    radial-gradient(circle at 50% 100%, rgba(170, 220, 255, 0.22), transparent 56%),
+    linear-gradient(145deg, rgba(175, 210, 255, 0.48), rgba(220, 235, 255, 0.16));
+}
+
 .bubble:hover {
   --scale: 1.08;
   border-color: var(--glass-border-strong);
