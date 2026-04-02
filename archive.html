@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  @media (max-width: 720px) {
-  .archive-grid {
-    grid-template-columns: 1fr;
-  }
-}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOUBOP — Archive</title>
   <link rel="stylesheet" href="style.css" />
+
   <style>
     .archive-page {
       position: relative;
@@ -42,7 +38,6 @@
       width: 42px;
       height: 42px;
       object-fit: contain;
-      display: block;
     }
 
     .archive-nav {
@@ -60,8 +55,8 @@
       text-transform: uppercase;
     }
 
-    .archive-nav a:hover,
-    .archive-nav a.active {
+    .archive-nav a.active,
+    .archive-nav a:hover {
       color: white;
     }
 
@@ -82,86 +77,60 @@
     .archive-intro h1 {
       margin: 0 0 14px;
       font-size: clamp(2.4rem, 6vw, 4.8rem);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
       text-transform: uppercase;
     }
 
     .archive-intro p {
       margin: 0;
-      max-width: 620px;
-      line-height: 1.7;
       color: rgba(255,255,255,0.78);
-      font-size: 1rem;
     }
 
-.archive-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  max-width: 720px;
-  margin-top: 20px;
-}
+    /* GRID FIX */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 720px;
+      margin-top: 20px;
+    }
 
+    /* CARD FIX */
     .archive-card {
-.archive-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 24px;
-  overflow: hidden;
-  text-decoration: none;
-  color: white;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 24px;
+      overflow: hidden;
+      text-decoration: none;
+      color: white;
 
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
 
-  backdrop-filter: blur(16px) saturate(135%);
-  -webkit-backdrop-filter: blur(16px) saturate(135%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
 
-  box-shadow:
-    inset 0 1px 8px rgba(255,255,255,0.12),
-    0 20px 40px rgba(0,0,0,0.22);
+      box-shadow:
+        inset 0 1px 8px rgba(255,255,255,0.12),
+        0 20px 40px rgba(0,0,0,0.22);
 
-  transition: transform 0.3s ease;
-}
-
-.archive-card:hover {
-  transform: translateY(-4px);
-}
+      transition: transform 0.3s ease;
     }
 
-.archive-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
+    .archive-card:hover {
+      transform: translateY(-4px);
+    }
 
-.archive-card:hover img {
-  transform: scale(1.05);
-  filter: brightness(0.75);
-}
+    .archive-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
 
     .archive-card:hover img {
-      transform: scale(1.04);
-      filter: brightness(0.72);
-    }
-
-    .archive-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 16%, rgba(255,255,255,0.16), transparent 18%),
-        linear-gradient(135deg,
-          rgba(255,190,230,0.06),
-          rgba(170,240,255,0.05) 30%,
-          rgba(220,255,200,0.05) 65%,
-          rgba(255,255,255,0.04));
-      mix-blend-mode: screen;
-      pointer-events: none;
+      transform: scale(1.05);
+      filter: brightness(0.75);
     }
 
     .archive-overlay {
@@ -170,78 +139,68 @@
       display: flex;
       align-items: end;
       padding: 20px;
-      background: linear-gradient(to top, rgba(0,0,0,0.58), rgba(0,0,0,0.08));
+      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
     }
 
     .archive-title {
       font-size: 1.6rem;
       font-weight: 700;
-      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
 
+    /* MOBILE */
     @media (max-width: 720px) {
-      .archive-page {
-        padding: 20px 12px 28px;
-      }
-
-      .archive-topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       .archive-grid {
         grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
+
 <body class="subpage">
   <div class="bg-layer"></div>
-  <div class="background-overlay"></div>
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
-  <div class="ambient ambient-3"></div>
 
   <main class="archive-page">
+
     <header class="archive-topbar">
       <a href="index.html" class="archive-brand">
-        <img src="logo.png" alt="BOUBOP logo">
+        <img src="logo.png">
         <span>BOUBOP</span>
       </a>
 
       <nav class="archive-nav">
         <a href="index.html">Home</a>
-        <a href="ss25.html">SS25</a>
+        <a href="ss25.html">SS26</a>
         <a href="archive.html" class="active">Archive</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
 
-    <a href="coppenhagen.html" class="archive-card">
-  <img src="1wit.png" alt="Coppenhagen Collection">
-  <div class="archive-overlay">
-    <div class="archive-title">Coppenhagen</div>
-  </div>
-</a>
-
     <section class="archive-intro">
       <span class="archive-eyebrow">BOUBOP / Collections</span>
       <h1>Archive</h1>
-      <p>
-        A growing index of collections, campaigns, and small wearable worlds.
-      </p>
+      <p>A growing index of collections.</p>
     </section>
 
     <section class="archive-grid">
+
       <a href="ss25.html" class="archive-card">
-        <img src="promo2.JPG" alt="SS25 Collection">
+        <img src="promo2.JPG">
         <div class="archive-overlay">
-          <div class="archive-title">SS25</div>
+          <div class="archive-title">SS26</div>
         </div>
       </a>
+
+      <a href="coppenhagen.html" class="archive-card">
+        <img src="1wit.png">
+        <div class="archive-overlay">
+          <div class="archive-title">Coppenhagen</div>
+        </div>
+      </a>
+
     </section>
+
   </main>
 </body>
 </html>
