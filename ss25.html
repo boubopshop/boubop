@@ -376,12 +376,11 @@
     </header>
 
     <section class="ss-intro">
-      <span class="ss-eyebrow">BOUBOP / Spring Summer 2025</span>
-      <h1>SS25 Collection</h1>
-      <p>
-        Soft flash, translucent color, playful asymmetry, and tiny worlds made wearable.
-        This collection lives between dream object, charm cluster, and editorial styling.
-      </p>
+<span class="ss-eyebrow">BOUBOP / Spring Summer 2026</span>
+<h1>SS26 Collection</h1>
+<p>
+  A series of handmade necklaces using new and used glass, plastic, gemstones, Swarovski crystals and beads, stainless steel and aluminum. A dreamy mix of color, texture, and contrasting materials.
+</p>
     </section>
 
     <section class="ss-layout">
@@ -415,33 +414,26 @@
 
       <aside class="ss-sidepanel">
         <div class="ss-panel">
-          <span class="ss-label">Collection Text</span>
-          <h2>Editorial Notes</h2>
-          <p>
-            BOUBOP SS25 moves through girlhood relics, glimmering color, soft disorder,
-            and glossy intimacy. These are pieces that catch light, distort symmetry,
-            and feel collected rather than perfected.
-          </p>
+<span class="ss-label">Editorial Notes</span>
+<h2>Editorial Notes</h2>
+<p>
+  Each necklace is one of a kind, made by hand without a fixed pattern. Materials, colors, and shapes are combined intuitively, so every piece is different in its own way.
+</p>
         </div>
 
         <div class="ss-panel">
           <span class="ss-label">Look Information</span>
           <div class="ss-meta">
-            <div class="ss-meta-item">
-              <strong>Jewelry Worn</strong>
-              <span id="slideJewelry">Asymmetric charm necklace with pink bow detail, translucent beads, and silver chain elements.</span>
-            </div>
+  <div class="ss-meta-item">
+    <strong>Jewelry Worn</strong>
+    <span id="slideJewelry">To be added per image.</span>
+  </div>
 
-            <div class="ss-meta-item">
-              <strong>Credits</strong>
-              <span id="slideCredits">Photography: Placeholder / Styling: Placeholder / Model: Placeholder</span>
-            </div>
-
-            <div class="ss-meta-item">
-              <strong>Look Notes</strong>
-              <span id="slideNotes">Close-up editorial framing focused on texture, shine, and the playful imbalance of the piece.</span>
-            </div>
-          </div>
+  <div class="ss-meta-item">
+    <strong>Credits</strong>
+    <span id="slideCredits">Photography: @emilka.przyklek / Styling: Julia Rozbicka / Models: Noen…, Isis Boumans, Maja Misiak / Make-up: Julia …</span>
+  </div>
+</div>
 
           <div class="ss-links">
             <a href="https://boubop.bigcartel.com/products" target="_blank">Shop Collection</a>
@@ -487,7 +479,6 @@
     const nextPreviewImg = document.getElementById("nextPreviewImg");
     const slideJewelry = document.getElementById("slideJewelry");
     const slideCredits = document.getElementById("slideCredits");
-    const slideNotes = document.getElementById("slideNotes");
     const thumbs = document.querySelectorAll(".ss-thumb");
 
     function updateSlide(index) {
@@ -502,7 +493,6 @@
 
       slideJewelry.textContent = current.jewelry;
       slideCredits.textContent = current.credits;
-      slideNotes.textContent = current.notes;
 
       thumbs.forEach((thumb, i) => {
         thumb.classList.toggle("active", i === currentIndex);
