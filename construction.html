@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOUBOP — Shop</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .construction-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .construction-box {
+      max-width: 520px;
+      padding: 28px 30px;
+      border-radius: 18px;
+
+      border: 1px solid var(--glass-border);
+
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+
+      box-shadow:
+        inset 0 2px 12px rgba(255,255,255,0.25),
+        0 18px 40px rgba(0,0,0,0.25);
+    }
+
+    .construction-box h1 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .construction-box p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .construction-links {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .construction-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
+    }
+
+    .construction-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .back-home {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      text-decoration: none;
+      color: white;
+      opacity: 0.7;
+      z-index: 5;
+    }
+
+    .back-home:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body class="subpage">
+
+  <div class="bg-layer"></div>
+
+  <a href="index.html" class="back-home">← back</a>
+
+  <div class="construction-wrap">
+    <div class="construction-box">
+
+      <h1>Page coming soon.</h1>
+
+      <p>
+        For orders or inquiries please contact:
+      </p>
+
+      <div class="construction-links">
+        <a href="mailto:boubop.shop@gmail.com">boubop.shop@gmail.com</a>
+        <a href="https://instagram.com/boubop_shop" target="_blank">@boubop_shop</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
