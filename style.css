@@ -335,9 +335,12 @@ body.subpage .bg-layer {
     padding: 16px 10px 26px;
   }
 
-  .logo {
-    width: min(195px, 62vw);
-  }
+.logo {
+  width: min(220px, 60vw);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
 
   .video-wrap {
     width: min(380px, 92vw);
