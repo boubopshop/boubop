@@ -415,90 +415,138 @@
     </section>
   </main>
 
-  <script>
-    const sharedEditorialText =
-      "The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.";
+  <div class="collection-grid"></div>
 
-    const pieces = [
-      {
-        title: "Piece 1",
-        price: "€00",
-        text: "A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.",
-        preview: "1wit.png",
-        images: ["1wit.png", "11wit.png", "12wit.png", "13wit.png", "14wit.png"]
-      },
-      {
-        title: "Piece 2",
-        price: "€00",
-        text: "One-of-a-kind piece from the Coppenhagen Collection.",
-        preview: "2wit.png",
-        images: ["2wit.png", "21wit.png", "22wit.png", "23wit.png", "24wit.png"]
-      },
-      {
-        title: "Piece 3",
-        price: "€00",
-        text: "One-of-a-kind piece from the Coppenhagen Collection.",
-        preview: "3wit.png",
-        images: ["3wit.png", "31wit.png", "32wit.png", "33wit.png", "34wit.png", "35wit.png"]
-      },
-      {
-        title: "Piece 4",
-        price: "€00",
-        text: "One-of-a-kind piece from the Coppenhagen Collection.",
-        preview: "4wit.png",
-        images: ["4wit.png", "41wit.png", "42wit.png", "43wit.png", "44wit.png", "45wit.png"]
-      },
-      {
-        title: "Piece 5",
-        price: "€00",
-        text: "One-of-a-kind piece from the Coppenhagen Collection.",
-        preview: "5wit.png",
-        images: ["5wit.png", "51wit.png", "52wit.png", "53wit.png", "54wit.png", "55wit.png", "56wit.png", "57wit.png", "58wit.png", "59wit.png", "510.png"]
-      },
-      {
-        title: "Piece 6",
-        price: "€00",
-        text: "One-of-a-kind piece from the Coppenhagen Collection.",
-        preview: "6wit.png",
-        images: ["6wit.png", "61wit.png"]
-      }
-    ];
+<div class="viewer">
+  <div class="viewer-content">
+    <span onclick="closeViewer()">✕</span>
+    <h2 class="viewer-title"></h2>
+    <p class="viewer-price"></p>
+    <div class="viewer-images"></div>
+  </div>
+</div>
 
-    let currentPiece = 0;
-    let currentImage = 0;
+<script>
+const pieces = [
+  {
+    name: "Piece 1",
+    price: "€85",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/1wit_opjwte.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167793/11wit_xgcs9a.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/12wit_gquzbl.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/13wit_qpnxrd.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/14wit_betxhd.png"
+    ]
+  },
+  {
+    name: "Piece 2",
+    price: "€80",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/2wit_q5n0n9.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/21wit_c9rt0k.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/22wit_obe9ae.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/23wit_pj9rcd.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/24wit_khntra.png"
+    ]
+  },
+  {
+    name: "Piece 3",
+    price: "€90",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/3wit_qocjbe.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/31wit_ku1vg4.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/32wit_gapmz1.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/33wit_hpvgrk.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/34wit_whocrr.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/35wit_wor91s.png"
+    ]
+  },
+  {
+    name: "Piece 4",
+    price: "€75",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/4wit_tukcmb.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/41wit_jeva0e.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/42wit_jbpltj.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/43wit_etzr3w.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/44wit_jjeqns.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/45wit_clovey.png"
+    ]
+  },
+  {
+    name: "Piece 5",
+    price: "€70",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/5wit_a3s4yx.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/51wit_ku82po.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167798/52wit_g905kh.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/53wit_oibfxc.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/55wit_lwlvtw.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/56wit_nuwufy.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/57wit_efdatq.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/59wit_d9qck7.png"
+    ]
+  },
+  {
+    name: "Piece 6",
+    price: "€65",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/6wit_ryesqu.png",
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/61wit_bodudj.png"
+    ]
+  },
+  {
+    name: "Special Piece",
+    price: "€120",
+    images: [
+      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167804/510_poiqbs.png"
+    ]
+  }
+];
 
-    const cpGrid = document.getElementById("cpGrid");
-    const cpMainImage = document.getElementById("cpMainImage");
-    const cpPieceTitle = document.getElementById("cpPieceTitle");
-    const cpPiecePrice = document.getElementById("cpPiecePrice");
-    const cpPieceText = document.getElementById("cpPieceText");
-    const cpEditorialText = document.getElementById("cpEditorialText");
-    const cpThumbs = document.getElementById("cpThumbs");
+// render grid
+const grid = document.querySelector(".collection-grid");
 
-    function renderGrid() {
-      cpGrid.innerHTML = "";
+pieces.forEach(piece => {
+  const card = document.createElement("div");
+  card.className = "collection-item";
 
-      pieces.forEach((piece, index) => {
-        const button = document.createElement("button");
-        button.className = "cp-piece" + (index === currentPiece ? " active" : "");
-        button.type = "button";
+  const img = document.createElement("img");
+  img.src = piece.images[0];
+  img.alt = piece.name;
 
-        button.innerHTML = `
-          <img src="${piece.preview}" alt="${piece.title}">
-          <div class="cp-piece-label">
-            <strong>${piece.title}</strong>
-            <span>${piece.price}</span>
-          </div>
-        `;
+  img.onclick = () => openViewer(piece);
 
-        button.addEventListener("click", () => {
-          renderPiece(index, 0);
-        });
+  card.appendChild(img);
+  grid.appendChild(card);
+});
 
-        cpGrid.appendChild(button);
-      });
-    }
+// viewer
+function openViewer(piece) {
+  const viewer = document.querySelector(".viewer");
+  const imagesContainer = document.querySelector(".viewer-images");
+  const title = document.querySelector(".viewer-title");
+  const price = document.querySelector(".viewer-price");
 
+  imagesContainer.innerHTML = "";
+
+  piece.images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    imagesContainer.appendChild(img);
+  });
+
+  title.textContent = piece.name;
+  price.textContent = piece.price;
+
+  viewer.classList.add("active");
+}
+
+function closeViewer() {
+  document.querySelector(".viewer").classList.remove("active");
+}
+</script>
     function renderPiece(pieceIndex, imageIndex = 0) {
       currentPiece = pieceIndex;
       currentImage = imageIndex;
