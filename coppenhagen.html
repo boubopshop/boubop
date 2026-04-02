@@ -89,15 +89,15 @@
       font-size: 1rem;
     }
 
-    .cp-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 26px;
-      align-items: start;
+    .cp-notes {
+      margin-top: 18px;
+      max-width: 760px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.78);
+      font-size: 0.96rem;
     }
 
-    .cp-grid-wrap,
-    .cp-sidepanel {
+    .cp-grid-wrap {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.18);
       border-radius: 26px;
@@ -106,9 +106,6 @@
       box-shadow:
         inset 0 1px 10px rgba(255,255,255,0.16),
         0 20px 40px rgba(0,0,0,0.22);
-    }
-
-    .cp-grid-wrap {
       padding: 18px;
     }
 
@@ -125,12 +122,12 @@
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
-      opacity: 0.86;
+      opacity: 0.88;
       text-align: left;
+      box-shadow: inset 0 1px 8px rgba(255,255,255,0.08);
     }
 
-    .cp-piece:hover,
-    .cp-piece.active {
+    .cp-piece:hover {
       opacity: 1;
       transform: translateY(-3px);
       border-color: rgba(255,255,255,0.34);
@@ -163,156 +160,105 @@
       color: rgba(255,255,255,0.72);
     }
 
-    .cp-sidepanel {
-      padding: 18px;
-      position: sticky;
-      top: 20px;
-    }
-
-    .cp-main-image-wrap {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.06);
-      min-height: 500px;
-      display: flex;
+    .cp-viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      display: none;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      padding: 20px;
     }
 
-    .cp-main-image-wrap img {
-      width: 100%;
-      max-height: 720px;
-      object-fit: contain;
-      display: block;
-      padding: 24px;
-    }
-
-    .cp-main-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 20% 16%, rgba(255,255,255,0.16), transparent 18%),
-        linear-gradient(135deg,
-          rgba(255,190,230,0.06),
-          rgba(170,240,255,0.05) 30%,
-          rgba(220,255,200,0.05) 65%,
-          rgba(255,255,255,0.04));
-      mix-blend-mode: screen;
-    }
-
-    .cp-controls {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
+    .cp-viewer.active {
       display: flex;
-      justify-content: space-between;
-      pointer-events: none;
     }
 
-    .cp-arrow {
-      pointer-events: auto;
-      width: 46px;
-      height: 46px;
+    .cp-viewer-content {
+      width: min(1100px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 28px;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow:
+        inset 0 1px 10px rgba(255,255,255,0.16),
+        0 20px 40px rgba(0,0,0,0.22);
+      padding: 22px;
+      position: relative;
+    }
+
+    .cp-close {
+      position: sticky;
+      top: 0;
+      margin-left: auto;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: 1px solid rgba(255,255,255,0.24);
       background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .cp-arrow:hover {
-      transform: scale(1.06);
+    .cp-close:hover {
       background: rgba(255,255,255,0.18);
     }
 
-    .cp-panel {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 20px;
-      padding: 16px;
-      margin-bottom: 14px;
+    .cp-viewer-header {
+      margin-top: 16px;
+      margin-bottom: 18px;
     }
 
-    .cp-panel-label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+    .cp-viewer-header h2 {
+      margin: 0 0 6px;
+      font-size: 1.5rem;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.56);
+      letter-spacing: 0.04em;
     }
 
-    .cp-panel h2 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .cp-panel p,
-    .cp-panel span {
+    .cp-viewer-header p {
       margin: 0;
-      line-height: 1.7;
       color: rgba(255,255,255,0.78);
-      font-size: 0.94rem;
-      display: block;
+      line-height: 1.7;
     }
 
-    .cp-thumbs {
+    .cp-viewer-price {
+      margin-top: 8px;
+      font-weight: 700;
+      color: white;
+    }
+
+    .cp-viewer-images {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
-    .cp-thumb {
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-    }
-
-    .cp-thumb:hover,
-    .cp-thumb.active {
-      opacity: 1;
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.35);
-    }
-
-    .cp-thumb img {
+    .cp-viewer-images img {
       width: 100%;
-      aspect-ratio: 1 / 1.15;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      padding: 16px;
       object-fit: contain;
-      display: block;
-      padding: 10px;
-    }
-
-    @media (max-width: 1180px) {
-      .cp-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .cp-sidepanel {
-        position: relative;
-        top: auto;
-      }
     }
 
     @media (max-width: 900px) {
       .cp-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cp-viewer-images {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -330,12 +276,8 @@
         grid-template-columns: 1fr;
       }
 
-      .cp-main-image-wrap {
-        min-height: 360px;
-      }
-
-      .cp-thumbs {
-        grid-template-columns: repeat(3, 1fr);
+      .cp-viewer-content {
+        padding: 16px;
       }
     }
   </style>
@@ -370,226 +312,179 @@
       <p>
         The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.
       </p>
+      <div class="cp-notes">
+        Each piece is one of a kind, made by hand without a fixed pattern. Materials, colors, and shapes are combined intuitively, so every piece is different in its own way.
+      </div>
     </section>
 
-    <section class="cp-layout">
-      <section class="cp-grid-wrap">
-        <div class="cp-grid" id="cpGrid"></div>
-      </section>
-
-      <aside class="cp-sidepanel">
-        <div class="cp-main-image-wrap">
-          <img id="cpMainImage" src="1wit.png" alt="Coppenhagen piece image">
-
-          <div class="cp-controls">
-            <button class="cp-arrow" id="cpPrevBtn" aria-label="Previous image">←</button>
-            <button class="cp-arrow" id="cpNextBtn" aria-label="Next image">→</button>
-          </div>
-        </div>
-
-        <div class="cp-panel">
-          <span class="cp-panel-label">Piece</span>
-          <h2 id="cpPieceTitle">Piece 1</h2>
-          <span id="cpPiecePrice">€00</span>
-        </div>
-
-        <div class="cp-panel">
-          <span class="cp-panel-label">Collection Notes</span>
-          <p id="cpEditorialText">
-            The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.
-          </p>
-        </div>
-
-        <div class="cp-panel">
-          <span class="cp-panel-label">Item Description</span>
-          <p id="cpPieceText">
-            A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.
-          </p>
-        </div>
-
-        <div class="cp-panel">
-          <span class="cp-panel-label">Views</span>
-          <div class="cp-thumbs" id="cpThumbs"></div>
-        </div>
-      </aside>
+    <section class="cp-grid-wrap">
+      <div class="cp-grid" id="cpGrid"></div>
     </section>
   </main>
 
-  <div class="collection-grid"></div>
+  <div class="cp-viewer" id="cpViewer">
+    <div class="cp-viewer-content">
+      <button class="cp-close" id="cpClose" aria-label="Close viewer">✕</button>
 
-<div class="viewer">
-  <div class="viewer-content">
-    <span onclick="closeViewer()">✕</span>
-    <h2 class="viewer-title"></h2>
-    <p class="viewer-price"></p>
-    <div class="viewer-images"></div>
+      <div class="cp-viewer-header">
+        <h2 id="cpViewerTitle"></h2>
+        <p id="cpViewerText"></p>
+        <div class="cp-viewer-price" id="cpViewerPrice"></div>
+      </div>
+
+      <div class="cp-viewer-images" id="cpViewerImages"></div>
+    </div>
   </div>
-</div>
 
-<script>
-const pieces = [
-  {
-    name: "Piece 1",
-    price: "€85",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/1wit_opjwte.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167793/11wit_xgcs9a.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/12wit_gquzbl.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/13wit_qpnxrd.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/14wit_betxhd.png"
-    ]
-  },
-  {
-    name: "Piece 2",
-    price: "€80",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/2wit_q5n0n9.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/21wit_c9rt0k.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/22wit_obe9ae.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/23wit_pj9rcd.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/24wit_khntra.png"
-    ]
-  },
-  {
-    name: "Piece 3",
-    price: "€90",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/3wit_qocjbe.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/31wit_ku1vg4.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/32wit_gapmz1.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/33wit_hpvgrk.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/34wit_whocrr.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/35wit_wor91s.png"
-    ]
-  },
-  {
-    name: "Piece 4",
-    price: "€75",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/4wit_tukcmb.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/41wit_jeva0e.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/42wit_jbpltj.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/43wit_etzr3w.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/44wit_jjeqns.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/45wit_clovey.png"
-    ]
-  },
-  {
-    name: "Piece 5",
-    price: "€70",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/5wit_a3s4yx.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/51wit_ku82po.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167798/52wit_g905kh.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/53wit_oibfxc.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/55wit_lwlvtw.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/56wit_nuwufy.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/57wit_efdatq.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/59wit_d9qck7.png"
-    ]
-  },
-  {
-    name: "Piece 6",
-    price: "€65",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/6wit_ryesqu.png",
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/61wit_bodudj.png"
-    ]
-  },
-  {
-    name: "Special Piece",
-    price: "€120",
-    images: [
-      "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167804/510_poiqbs.png"
-    ]
-  }
-];
+  <script>
+    const sharedText =
+      "The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.";
 
-// render grid
-const grid = document.querySelector(".collection-grid");
+    const pieces = [
+      {
+        name: "Piece 1",
+        price: "€85",
+        text: "A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/1wit_opjwte.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167793/11wit_xgcs9a.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/12wit_gquzbl.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/13wit_qpnxrd.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/14wit_betxhd.png"
+        ]
+      },
+      {
+        name: "Piece 2",
+        price: "€80",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/2wit_q5n0n9.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/21wit_c9rt0k.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/22wit_obe9ae.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167792/23wit_pj9rcd.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/24wit_khntra.png"
+        ]
+      },
+      {
+        name: "Piece 3",
+        price: "€90",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/3wit_qocjbe.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/31wit_ku1vg4.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/32wit_gapmz1.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167794/33wit_hpvgrk.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/34wit_whocrr.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/35wit_wor91s.png"
+        ]
+      },
+      {
+        name: "Piece 4",
+        price: "€75",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/4wit_tukcmb.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167795/41wit_jeva0e.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/42wit_jbpltj.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167796/43wit_etzr3w.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/44wit_jjeqns.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/45wit_clovey.png"
+        ]
+      },
+      {
+        name: "Piece 5",
+        price: "€70",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/5wit_a3s4yx.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/51wit_ku82po.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167798/52wit_g905kh.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167797/53wit_oibfxc.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/55wit_lwlvtw.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/56wit_nuwufy.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/57wit_efdatq.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167799/59wit_d9qck7.png"
+        ]
+      },
+      {
+        name: "Piece 6",
+        price: "€65",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167791/6wit_ryesqu.png",
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167801/61wit_bodudj.png"
+        ]
+      },
+      {
+        name: "Special Piece",
+        price: "€120",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        images: [
+          "https://res.cloudinary.com/dbbxrrpjn/image/upload/v1775167804/510_poiqbs.png"
+        ]
+      }
+    ];
 
-pieces.forEach(piece => {
-  const card = document.createElement("div");
-  card.className = "collection-item";
+    const cpGrid = document.getElementById("cpGrid");
+    const cpViewer = document.getElementById("cpViewer");
+    const cpViewerTitle = document.getElementById("cpViewerTitle");
+    const cpViewerText = document.getElementById("cpViewerText");
+    const cpViewerPrice = document.getElementById("cpViewerPrice");
+    const cpViewerImages = document.getElementById("cpViewerImages");
+    const cpClose = document.getElementById("cpClose");
 
-  const img = document.createElement("img");
-  img.src = piece.images[0];
-  img.alt = piece.name;
+    pieces.forEach((piece) => {
+      const card = document.createElement("button");
+      card.className = "cp-piece";
+      card.type = "button";
 
-  img.onclick = () => openViewer(piece);
+      card.innerHTML = `
+        <img src="${piece.images[0]}" alt="${piece.name}">
+        <div class="cp-piece-label">
+          <strong>${piece.name}</strong>
+          <span>${piece.price}</span>
+        </div>
+      `;
 
-  card.appendChild(img);
-  grid.appendChild(card);
-});
+      card.addEventListener("click", () => openViewer(piece));
+      cpGrid.appendChild(card);
+    });
 
-// viewer
-function openViewer(piece) {
-  const viewer = document.querySelector(".viewer");
-  const imagesContainer = document.querySelector(".viewer-images");
-  const title = document.querySelector(".viewer-title");
-  const price = document.querySelector(".viewer-price");
+    function openViewer(piece) {
+      cpViewerTitle.textContent = piece.name;
+      cpViewerText.textContent = piece.text || sharedText;
+      cpViewerPrice.textContent = piece.price;
+      cpViewerImages.innerHTML = "";
 
-  imagesContainer.innerHTML = "";
-
-  piece.images.forEach(src => {
-    const img = document.createElement("img");
-    img.src = src;
-    imagesContainer.appendChild(img);
-  });
-
-  title.textContent = piece.name;
-  price.textContent = piece.price;
-
-  viewer.classList.add("active");
-}
-
-function closeViewer() {
-  document.querySelector(".viewer").classList.remove("active");
-}
-</script>
-    function renderPiece(pieceIndex, imageIndex = 0) {
-      currentPiece = pieceIndex;
-      currentImage = imageIndex;
-
-      const piece = pieces[currentPiece];
-      const image = piece.images[currentImage];
-
-      cpMainImage.src = image;
-      cpMainImage.alt = `${piece.title} image ${currentImage + 1}`;
-      cpPieceTitle.textContent = piece.title;
-      cpPiecePrice.textContent = piece.price;
-      cpPieceText.textContent = piece.text;
-      cpEditorialText.textContent = sharedEditorialText;
-
-      cpThumbs.innerHTML = "";
-
-      piece.images.forEach((src, i) => {
-        const button = document.createElement("button");
-        button.className = "cp-thumb" + (i === currentImage ? " active" : "");
-        button.type = "button";
-        button.innerHTML = `<img src="${src}" alt="${piece.title} thumbnail ${i + 1}">`;
-        button.addEventListener("click", () => {
-          renderPiece(currentPiece, i);
-        });
-        cpThumbs.appendChild(button);
+      piece.images.forEach((src, index) => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.alt = `${piece.name} image ${index + 1}`;
+        cpViewerImages.appendChild(img);
       });
 
-      renderGrid();
+      cpViewer.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
 
-    document.getElementById("cpPrevBtn").addEventListener("click", () => {
-      const piece = pieces[currentPiece];
-      const nextIndex = (currentImage - 1 + piece.images.length) % piece.images.length;
-      renderPiece(currentPiece, nextIndex);
+    function closeViewer() {
+      cpViewer.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    cpClose.addEventListener("click", closeViewer);
+
+    cpViewer.addEventListener("click", (e) => {
+      if (e.target === cpViewer) {
+        closeViewer();
+      }
     });
 
-    document.getElementById("cpNextBtn").addEventListener("click", () => {
-      const piece = pieces[currentPiece];
-      const nextIndex = (currentImage + 1) % piece.images.length;
-      renderPiece(currentPiece, nextIndex);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && cpViewer.classList.contains("active")) {
+        closeViewer();
+      }
     });
-
-    renderPiece(0, 0);
   </script>
 </body>
 </html>
