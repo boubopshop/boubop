@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  @media (max-width: 720px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOUBOP — Archive</title>
@@ -90,36 +95,54 @@
       font-size: 1rem;
     }
 
-    .archive-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
-      justify-content: start;
-      gap: 22px;
-    }
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 720px;
+  margin-top: 20px;
+}
 
     .archive-card {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      border-radius: 24px;
-      overflow: hidden;
-      text-decoration: none;
-      color: white;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.16);
-      box-shadow:
-        inset 0 1px 8px rgba(255,255,255,0.12),
-        0 20px 40px rgba(0,0,0,0.22);
-      backdrop-filter: blur(16px) saturate(135%);
-      -webkit-backdrop-filter: blur(16px) saturate(135%);
+.archive-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  color: white;
+
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.16);
+
+  backdrop-filter: blur(16px) saturate(135%);
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+
+  box-shadow:
+    inset 0 1px 8px rgba(255,255,255,0.12),
+    0 20px 40px rgba(0,0,0,0.22);
+
+  transition: transform 0.3s ease;
+}
+
+.archive-card:hover {
+  transform: translateY(-4px);
+}
     }
 
-    .archive-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.35s ease, filter 0.35s ease;
-    }
+.archive-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.archive-card:hover img {
+  transform: scale(1.05);
+  filter: brightness(0.75);
+}
 
     .archive-card:hover img {
       transform: scale(1.04);
@@ -197,7 +220,7 @@
     </header>
 
     <a href="coppenhagen.html" class="archive-card">
-  <img src="1.png" alt="Coppenhagen Collection">
+  <img src="1wit.png" alt="Coppenhagen Collection">
   <div class="archive-overlay">
     <div class="archive-title">Coppenhagen</div>
   </div>
