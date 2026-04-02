@@ -2,42 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOUBOP — SS25 Collection</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BOUBOP — SS26</title>
+  <link rel="stylesheet" href="style.css"/>
+
   <style>
     .ss-page {
       position: relative;
       z-index: 2;
       min-height: 100vh;
-      padding: 26px 20px 40px;
+      padding: 30px 20px 40px;
       color: white;
+      text-align: center;
     }
 
     .ss-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      margin-bottom: 34px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
     }
 
     .ss-brand {
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: white;
-      font-weight: 700;
+      font-weight: bold;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
     .ss-brand img {
-      width: 42px;
-      height: 42px;
-      object-fit: contain;
-      display: block;
+      width: 40px;
     }
 
     .ss-nav {
@@ -47,481 +45,95 @@
     }
 
     .ss-nav a {
-      text-decoration: none;
-      color: rgba(255,255,255,0.82);
-      font-size: 0.86rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: opacity 0.2s ease;
-    }
-
-    .ss-nav a:hover,
-    .ss-nav a.active {
-      color: white;
-    }
-
-    .ss-intro {
-      max-width: 760px;
-      margin-bottom: 30px;
-    }
-
-    .ss-eyebrow {
-      display: block;
-      margin-bottom: 12px;
-      font-size: 0.76rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.62);
-    }
-
-    .ss-intro h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 0.94;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      text-shadow: 0 4px 20px rgba(0,0,0,0.18);
-    }
-
-    .ss-intro p {
-      margin: 0;
-      max-width: 640px;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.78);
-      font-size: 1rem;
-    }
-
-    .ss-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 360px;
-      gap: 26px;
-      align-items: start;
-    }
-
-    .ss-stage-wrap,
-    .ss-sidepanel {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 26px;
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      box-shadow:
-        inset 0 1px 10px rgba(255,255,255,0.16),
-        0 20px 40px rgba(0,0,0,0.22);
-    }
-
-    .ss-stage-wrap {
-      padding: 18px;
-    }
-
-    .ss-stage {
-      display: grid;
-      grid-template-columns: 92px minmax(0, 1fr) 92px;
-      gap: 14px;
-      align-items: center;
-    }
-
-    .ss-preview {
-      aspect-ratio: 3 / 4;
-      border: 0;
-      padding: 0;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      background: rgba(255,255,255,0.06);
-      opacity: 0.58;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .ss-preview:hover {
-      opacity: 0.9;
-      transform: scale(1.02);
-    }
-
-    .ss-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .ss-main {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border-radius: 22px;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.28);
-    }
-
-    .ss-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .ss-main::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 22% 16%, rgba(255,255,255,0.18), transparent 18%),
-        linear-gradient(135deg,
-          rgba(255,255,255,0.04),
-          rgba(255,210,230,0.05) 20%,
-          rgba(170,240,255,0.04) 45%,
-          rgba(220,255,200,0.05) 70%,
-          rgba(255,255,255,0.03));
-      mix-blend-mode: screen;
-    }
-
-    .ss-controls {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-    }
-
-    .ss-arrow {
-      pointer-events: auto;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.24);
-      background: rgba(255,255,255,0.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: white;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .ss-arrow:hover {
-      transform: scale(1.06);
-      background: rgba(255,255,255,0.18);
-    }
-
-    .ss-thumbs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .ss-thumb {
-      padding: 0;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.06);
-      border-radius: 16px;
-      overflow: hidden;
-      aspect-ratio: 4 / 5;
-      cursor: pointer;
-      opacity: 0.62;
-      transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .ss-thumb:hover,
-    .ss-thumb.active {
-      opacity: 1;
-      border-color: rgba(255,255,255,0.4);
-      transform: translateY(-2px);
-    }
-
-    .ss-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .ss-sidepanel {
-      padding: 22px;
-    }
-
-    .ss-panel + .ss-panel {
-      margin-top: 28px;
-      padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .ss-label {
-      display: block;
-      margin-bottom: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.56);
-    }
-
-    .ss-panel h2 {
-      margin: 0 0 10px;
-      font-size: 1.08rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .ss-panel p {
-      margin: 0;
-      line-height: 1.75;
       color: rgba(255,255,255,0.8);
-      font-size: 0.97rem;
-    }
-
-    .ss-meta {
-      display: grid;
-      gap: 18px;
-    }
-
-    .ss-meta-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .ss-meta-item span {
-      color: rgba(255,255,255,0.78);
-      line-height: 1.65;
-      font-size: 0.95rem;
-    }
-
-    .ss-links {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .ss-links a {
       text-decoration: none;
-      color: white;
-      font-size: 0.84rem;
-      font-weight: 700;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: transform 0.2s ease, background 0.2s ease;
     }
 
-    .ss-links a:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.16);
+    .ss-nav a:hover {
+      color: white;
     }
 
-    @media (max-width: 1080px) {
-      .ss-layout {
+    .ss-title {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+    }
+
+    .ss-subtitle {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+    }
+
+    .ss-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .ss-grid img {
+      width: 100%;
+      border-radius: 20px;
+      object-fit: cover;
+      background: rgba(255,255,255,0.05);
+      padding: 10px;
+    }
+
+    @media (max-width: 800px) {
+      .ss-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .ss-grid {
         grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .ss-page {
-        padding: 20px 12px 28px;
-      }
-
-      .ss-topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .ss-stage {
-        grid-template-columns: 1fr;
-      }
-
-      .ss-preview {
-        display: none;
-      }
-
-      .ss-main {
-        aspect-ratio: 3 / 4;
       }
     }
   </style>
 </head>
+
 <body class="subpage">
   <div class="bg-layer"></div>
   <div class="background-overlay"></div>
-  <div class="ambient ambient-1"></div>
-  <div class="ambient ambient-2"></div>
-  <div class="ambient ambient-3"></div>
 
   <main class="ss-page">
+
+    <!-- NAV -->
     <header class="ss-topbar">
       <a href="index.html" class="ss-brand">
-        <img src="logo.png" alt="BOUBOP logo">
-        <span>BOUBOP</span>
+        <img src="logo.png">
+        BOUBOP
       </a>
 
       <nav class="ss-nav">
         <a href="index.html">Home</a>
-        <a href="ss25.html" class="active">SS25</a>
+        <a href="ss26.html">SS26</a>
+        <a href="coppenhagen.html">Coppenhagen</a>
         <a href="archive.html">Archive</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
     </header>
 
-    <section class="ss-intro">
-<span class="ss-eyebrow">BOUBOP / Spring Summer 2026</span>
-<h1>SS26 Collection</h1>
-<p>
-  A series of handmade necklaces using new and used glass, plastic, gemstones, Swarovski crystals and beads, stainless steel and aluminum. A dreamy mix of color, texture, and contrasting materials.
-</p>
+    <!-- TITLE -->
+    <h1 class="ss-title">SS26</h1>
+    <p class="ss-subtitle">Coming Soon</p>
+
+    <!-- IMAGE GRID -->
+    <section class="ss-grid">
+      <!-- replace with your existing images -->
+      <img src="promo1.JPG">
+      <img src="promo2.JPG">
+      <img src="promo3.JPG">
+      <img src="promo4.JPG">
     </section>
 
-    <section class="ss-layout">
-      <div class="ss-stage-wrap">
-        <div class="ss-stage">
-          <button class="ss-preview" id="prevPreview" aria-label="Previous image">
-            <img id="prevPreviewImg" src="promo4.JPG" alt="Previous preview">
-          </button>
-
-          <div class="ss-main">
-            <img id="mainImage" src="promo1.JPG" alt="SS25 collection image">
-
-            <div class="ss-controls">
-              <button class="ss-arrow" id="prevBtn" aria-label="Previous slide">←</button>
-              <button class="ss-arrow" id="nextBtn" aria-label="Next slide">→</button>
-            </div>
-          </div>
-
-          <button class="ss-preview" id="nextPreview" aria-label="Next image">
-            <img id="nextPreviewImg" src="promo2.JPG" alt="Next preview">
-          </button>
-        </div>
-
-        <div class="ss-thumbs">
-          <button class="ss-thumb active" data-index="0"><img src="promo1.JPG" alt="Thumbnail 1"></button>
-          <button class="ss-thumb" data-index="1"><img src="promo2.JPG" alt="Thumbnail 2"></button>
-          <button class="ss-thumb" data-index="2"><img src="promo3.JPG" alt="Thumbnail 3"></button>
-          <button class="ss-thumb" data-index="3"><img src="promo4.JPG" alt="Thumbnail 4"></button>
-        </div>
-      </div>
-
-      <aside class="ss-sidepanel">
-        <div class="ss-panel">
-<span class="ss-label">Editorial Notes</span>
-<h2>Editorial Notes</h2>
-<p>
-  Each necklace is one of a kind, made by hand without a fixed pattern. Materials, colors, and shapes are combined intuitively, so every piece is different in its own way.
-</p>
-        </div>
-
-        <div class="ss-panel">
-          <span class="ss-label">Look Information</span>
-          <div class="ss-meta">
-  <div class="ss-meta-item">
-    <strong>Jewelry Worn</strong>
-    <span id="slideJewelry">To be added per image.</span>
-  </div>
-
-  <div class="ss-meta-item">
-    <strong>Credits</strong>
-    <span id="slideCredits">Photography: @emilka.przyklek / Styling: Julia Rozbicka / Models: Noen…, Isis Boumans, Maja Misiak / Make-up: Julia …</span>
-  </div>
-</div>
-
-          <div class="ss-links">
-            <a href="https://boubop.bigcartel.com/products" target="_blank">Shop Collection</a>
-            <a href="archive.html">Back to Archive</a>
-          </div>
-        </div>
-      </aside>
-    </section>
   </main>
-
-  <script>
-    const slides = [
-      {
-        image: "promo1.JPG",
-        jewelry: "Asymmetric charm necklace with pink bow detail, translucent beads, and silver chain elements.",
-        credits: "Photography: Placeholder / Styling: Placeholder / Model: Placeholder",
-        notes: "Close-up editorial framing focused on texture, shine, and the playful imbalance of the piece."
-      },
-      {
-        image: "promo2.JPG",
-        jewelry: "Two editorial necklace looks shown in styling context with layered accessories and soft-flash beauty details.",
-        credits: "Photography: Placeholder / Styling: Placeholder / Models: Placeholder",
-        notes: "Wider campaign shot presenting the collection in a styled, high-summer editorial setting."
-      },
-      {
-        image: "promo3.JPG",
-        jewelry: "Beaded statement necklace with pink and burgundy tones, dangling crystal details, and mixed-shape charms.",
-        credits: "Photography: Placeholder / Styling: Placeholder / Model: Placeholder",
-        notes: "A front-facing image emphasizing color rhythm, material contrast, and central drop details."
-      },
-      {
-        image: "promo4.JPG",
-        jewelry: "Two contrasting necklace silhouettes shown side-by-side to highlight variation within the collection.",
-        credits: "Photography: Placeholder / Styling: Placeholder / Models: Placeholder",
-        notes: "Dual portrait crop focusing on necklines, surface reflection, and how the pieces sit on the body."
-      }
-    ];
-
-    let currentIndex = 0;
-
-    const mainImage = document.getElementById("mainImage");
-    const prevPreviewImg = document.getElementById("prevPreviewImg");
-    const nextPreviewImg = document.getElementById("nextPreviewImg");
-    const slideJewelry = document.getElementById("slideJewelry");
-    const slideCredits = document.getElementById("slideCredits");
-    const thumbs = document.querySelectorAll(".ss-thumb");
-
-    function updateSlide(index) {
-      currentIndex = index;
-      const current = slides[currentIndex];
-      const prev = slides[(currentIndex - 1 + slides.length) % slides.length];
-      const next = slides[(currentIndex + 1) % slides.length];
-
-      mainImage.src = current.image;
-      prevPreviewImg.src = prev.image;
-      nextPreviewImg.src = next.image;
-
-      slideJewelry.textContent = current.jewelry;
-      slideCredits.textContent = current.credits;
-
-      thumbs.forEach((thumb, i) => {
-        thumb.classList.toggle("active", i === currentIndex);
-      });
-    }
-
-    document.getElementById("prevBtn").addEventListener("click", () => {
-      updateSlide((currentIndex - 1 + slides.length) % slides.length);
-    });
-
-    document.getElementById("nextBtn").addEventListener("click", () => {
-      updateSlide((currentIndex + 1) % slides.length);
-    });
-
-    document.getElementById("prevPreview").addEventListener("click", () => {
-      updateSlide((currentIndex - 1 + slides.length) % slides.length);
-    });
-
-    document.getElementById("nextPreview").addEventListener("click", () => {
-      updateSlide((currentIndex + 1) % slides.length);
-    });
-
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener("click", () => {
-        updateSlide(Number(thumb.dataset.index));
-      });
-    });
-
-    updateSlide(0);
-  </script>
 </body>
 </html>
