@@ -37,7 +37,6 @@
       width: 42px;
       height: 42px;
       object-fit: contain;
-      display: block;
     }
 
     .cp-nav {
@@ -61,7 +60,7 @@
     }
 
     .cp-intro {
-      max-width: 760px;
+      max-width: 900px;
       margin-bottom: 30px;
     }
 
@@ -84,7 +83,7 @@
 
     .cp-intro p {
       margin: 0;
-      max-width: 640px;
+      max-width: 820px;
       line-height: 1.7;
       color: rgba(255,255,255,0.78);
       font-size: 1rem;
@@ -92,13 +91,13 @@
 
     .cp-layout {
       display: grid;
-      grid-template-columns: 300px minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1fr) 360px;
       gap: 26px;
       align-items: start;
     }
 
-    .cp-sidebar,
-    .cp-viewer {
+    .cp-grid-wrap,
+    .cp-sidepanel {
       background: rgba(255,255,255,0.08);
       border: 1px solid rgba(255,255,255,0.18);
       border-radius: 26px;
@@ -109,40 +108,32 @@
         0 20px 40px rgba(0,0,0,0.22);
     }
 
-    .cp-sidebar {
+    .cp-grid-wrap {
       padding: 18px;
     }
 
-    .cp-sidebar-title {
-      display: block;
-      margin-bottom: 14px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.56);
-    }
-
-    .cp-piece-list {
+    .cp-grid {
       display: grid;
-      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
     .cp-piece {
       border: 1px solid rgba(255,255,255,0.14);
       background: rgba(255,255,255,0.06);
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-      opacity: 0.82;
+      transition: transform 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+      opacity: 0.86;
+      text-align: left;
     }
 
     .cp-piece:hover,
     .cp-piece.active {
       opacity: 1;
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.35);
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.34);
     }
 
     .cp-piece img {
@@ -150,27 +141,32 @@
       aspect-ratio: 1 / 1.15;
       object-fit: contain;
       display: block;
-      background: rgba(0,0,0,0.12);
-      padding: 12px;
+      background: rgba(255,255,255,0.04);
+      padding: 14px;
     }
 
     .cp-piece-label {
-      padding: 12px 14px 14px;
-      font-size: 0.9rem;
-      font-weight: 700;
+      padding: 12px 14px 16px;
+    }
+
+    .cp-piece-label strong {
+      display: block;
+      font-size: 0.92rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      margin-bottom: 4px;
     }
 
-    .cp-viewer {
+    .cp-piece-label span {
+      display: block;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .cp-sidepanel {
       padding: 18px;
-    }
-
-    .cp-main {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 280px;
-      gap: 18px;
-      align-items: start;
+      position: sticky;
+      top: 20px;
     }
 
     .cp-main-image-wrap {
@@ -178,16 +174,16 @@
       border-radius: 22px;
       overflow: hidden;
       background: rgba(255,255,255,0.06);
-      min-height: 620px;
+      min-height: 500px;
       display: flex;
       align-items: center;
       justify-content: center;
+      margin-bottom: 16px;
     }
 
     .cp-main-image-wrap img {
       width: 100%;
-      height: 100%;
-      max-height: 760px;
+      max-height: 720px;
       object-fit: contain;
       display: block;
       padding: 24px;
@@ -199,7 +195,7 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 22% 16%, rgba(255,255,255,0.16), transparent 18%),
+        radial-gradient(circle at 20% 16%, rgba(255,255,255,0.16), transparent 18%),
         linear-gradient(135deg,
           rgba(255,190,230,0.06),
           rgba(170,240,255,0.05) 30%,
@@ -238,17 +234,12 @@
       background: rgba(255,255,255,0.18);
     }
 
-    .cp-sidepanel {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
     .cp-panel {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 20px;
       padding: 16px;
+      margin-bottom: 14px;
     }
 
     .cp-panel-label {
@@ -279,7 +270,7 @@
 
     .cp-thumbs {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
     }
 
@@ -302,23 +293,26 @@
 
     .cp-thumb img {
       width: 100%;
-      aspect-ratio: 1 / 1.2;
+      aspect-ratio: 1 / 1.15;
       object-fit: contain;
       display: block;
       padding: 10px;
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
       .cp-layout {
         grid-template-columns: 1fr;
       }
 
-      .cp-main {
-        grid-template-columns: 1fr;
+      .cp-sidepanel {
+        position: relative;
+        top: auto;
       }
+    }
 
-      .cp-main-image-wrap {
-        min-height: 460px;
+    @media (max-width: 900px) {
+      .cp-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -332,12 +326,16 @@
         align-items: flex-start;
       }
 
-      .cp-thumbs {
-        grid-template-columns: repeat(4, 1fr);
+      .cp-grid {
+        grid-template-columns: 1fr;
       }
 
       .cp-main-image-wrap {
         min-height: 360px;
+      }
+
+      .cp-thumbs {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -358,7 +356,7 @@
 
       <nav class="cp-nav">
         <a href="index.html">Home</a>
-        <a href="ss25.html">SS25</a>
+        <a href="ss25.html">SS26</a>
         <a href="coppenhagen.html" class="active">Coppenhagen</a>
         <a href="archive.html">Archive</a>
         <a href="about.html">About</a>
@@ -367,98 +365,139 @@
     </header>
 
     <section class="cp-intro">
-<span class="cp-eyebrow">BOUBOP / Coppenhagen Collection</span>
-<h1>Coppenhagen Collection</h1>
-<p>
-  The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.
-</p>
+      <span class="cp-eyebrow">BOUBOP / Coppenhagen Collection</span>
+      <h1>Coppenhagen Collection</h1>
+      <p>
+        The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.
+      </p>
     </section>
 
     <section class="cp-layout">
-      <aside class="cp-sidebar">
-        <span class="cp-sidebar-title">Pieces</span>
+      <section class="cp-grid-wrap">
+        <div class="cp-grid" id="cpGrid"></div>
+      </section>
 
-        <div class="cp-piece-list">
-          <button class="cp-piece active" data-piece="0">
-  <img src="1wit.png" alt="Piece 1">
-  <div class="cp-piece-label">Piece 1</div>
-</button>
+      <aside class="cp-sidepanel">
+        <div class="cp-main-image-wrap">
+          <img id="cpMainImage" src="1wit.png" alt="Coppenhagen piece image">
 
-<button class="cp-piece" data-piece="1">
-  <img src="2wit.png" alt="Piece 2">
-  <div class="cp-piece-label">Piece 2</div>
-</button>
+          <div class="cp-controls">
+            <button class="cp-arrow" id="cpPrevBtn" aria-label="Previous image">←</button>
+            <button class="cp-arrow" id="cpNextBtn" aria-label="Next image">→</button>
+          </div>
+        </div>
+
+        <div class="cp-panel">
+          <span class="cp-panel-label">Piece</span>
+          <h2 id="cpPieceTitle">Piece 1</h2>
+          <span id="cpPiecePrice">€00</span>
+        </div>
+
+        <div class="cp-panel">
+          <span class="cp-panel-label">Collection Notes</span>
+          <p id="cpEditorialText">
+            The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.
+          </p>
+        </div>
+
+        <div class="cp-panel">
+          <span class="cp-panel-label">Item Description</span>
+          <p id="cpPieceText">
+            A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.
+          </p>
+        </div>
+
+        <div class="cp-panel">
+          <span class="cp-panel-label">Views</span>
+          <div class="cp-thumbs" id="cpThumbs"></div>
         </div>
       </aside>
-
-      <section class="cp-viewer">
-        <div class="cp-main">
-          <div class="cp-main-image-wrap">
-            <img id="cpMainImage" src="1.png" alt="Coppenhagen piece image">
-
-            <div class="cp-controls">
-              <button class="cp-arrow" id="cpPrevBtn" aria-label="Previous image">←</button>
-              <button class="cp-arrow" id="cpNextBtn" aria-label="Next image">→</button>
-            </div>
-          </div>
-
-          <div class="cp-sidepanel">
-            <div class="cp-panel">
-              <span class="cp-panel-label">Piece</span>
-              <h2 id="cpPieceTitle">Piece 1</h2>
-              <p id="cpPieceText">Placeholder text for the first jewelry piece. You can replace this later with the real description, materials, or inspiration.</p>
-            </div>
-
-            <div class="cp-panel">
-              <span class="cp-panel-label">Image Notes</span>
-              <span id="cpImageNote">Main piece image</span>
-            </div>
-
-            <div class="cp-panel">
-              <span class="cp-panel-label">Views</span>
-              <div class="cp-thumbs" id="cpThumbs"></div>
-            </div>
-          </div>
-        </div>
-      </section>
     </section>
   </main>
 
   <script>
-const pieces = [
-  {
-    title: "Piece 1",
-    text: "A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.",
-    images: [
-      { src: "1wit.png", note: "Main piece image" },
-      { src: "11wit.png", note: "Close-up 1" },
-      { src: "12wit.png", note: "Close-up 2" },
-      { src: "13wit.png", note: "Close-up 3" },
-      { src: "14wit.png", note: "Close-up 4" }
-    ]
-  },
-  {
-    title: "Piece 2",
-    text: "Placeholder text for the second jewelry piece. Replace this with the real piece description whenever you're ready.",
-    images: [
-      { src: "2wit.png", note: "Main piece image" },
-      { src: "21wit.png", note: "Close-up 1" },
-      { src: "22wit.png", note: "Close-up 2" },
-      { src: "23wit.png", note: "Close-up 3" },
-      { src: "24wit.png", note: "Close-up 4" }
-    ]
-  }
-];
+    const sharedEditorialText =
+      "The Coppenhagen Collection is a series of one-of-a-kind necklaces, bracelets, earrings, and individual wire-wrapped beads and charms, created for Coppenhagen Beads in Amsterdam. Available from April 3rd, 2026, in store only.";
+
+    const pieces = [
+      {
+        title: "Piece 1",
+        price: "€00",
+        text: "A playful set of a charm-heavy necklace and matching bow earrings, combining soft greens, teals, pinks, and amber tones with mixed materials, beads and dangling details.",
+        preview: "1wit.png",
+        images: ["1wit.png", "11wit.png", "12wit.png", "13wit.png", "14wit.png"]
+      },
+      {
+        title: "Piece 2",
+        price: "€00",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        preview: "2wit.png",
+        images: ["2wit.png", "21wit.png", "22wit.png", "23wit.png", "24wit.png"]
+      },
+      {
+        title: "Piece 3",
+        price: "€00",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        preview: "3wit.png",
+        images: ["3wit.png", "31wit.png", "32wit.png", "33wit.png", "34wit.png", "35wit.png"]
+      },
+      {
+        title: "Piece 4",
+        price: "€00",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        preview: "4wit.png",
+        images: ["4wit.png", "41wit.png", "42wit.png", "43wit.png", "44wit.png", "45wit.png"]
+      },
+      {
+        title: "Piece 5",
+        price: "€00",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        preview: "5wit.png",
+        images: ["5wit.png", "51wit.png", "52wit.png", "53wit.png", "54wit.png", "55wit.png", "56wit.png", "57wit.png", "58wit.png", "59wit.png", "510.png"]
+      },
+      {
+        title: "Piece 6",
+        price: "€00",
+        text: "One-of-a-kind piece from the Coppenhagen Collection.",
+        preview: "6wit.png",
+        images: ["6wit.png", "61wit.png"]
+      }
+    ];
 
     let currentPiece = 0;
     let currentImage = 0;
 
+    const cpGrid = document.getElementById("cpGrid");
     const cpMainImage = document.getElementById("cpMainImage");
     const cpPieceTitle = document.getElementById("cpPieceTitle");
+    const cpPiecePrice = document.getElementById("cpPiecePrice");
     const cpPieceText = document.getElementById("cpPieceText");
-    const cpImageNote = document.getElementById("cpImageNote");
+    const cpEditorialText = document.getElementById("cpEditorialText");
     const cpThumbs = document.getElementById("cpThumbs");
-    const pieceButtons = document.querySelectorAll(".cp-piece");
+
+    function renderGrid() {
+      cpGrid.innerHTML = "";
+
+      pieces.forEach((piece, index) => {
+        const button = document.createElement("button");
+        button.className = "cp-piece" + (index === currentPiece ? " active" : "");
+        button.type = "button";
+
+        button.innerHTML = `
+          <img src="${piece.preview}" alt="${piece.title}">
+          <div class="cp-piece-label">
+            <strong>${piece.title}</strong>
+            <span>${piece.price}</span>
+          </div>
+        `;
+
+        button.addEventListener("click", () => {
+          renderPiece(index, 0);
+        });
+
+        cpGrid.appendChild(button);
+      });
+    }
 
     function renderPiece(pieceIndex, imageIndex = 0) {
       currentPiece = pieceIndex;
@@ -467,34 +506,28 @@ const pieces = [
       const piece = pieces[currentPiece];
       const image = piece.images[currentImage];
 
-      cpMainImage.src = image.src;
-      cpMainImage.alt = piece.title + " image " + (currentImage + 1);
+      cpMainImage.src = image;
+      cpMainImage.alt = `${piece.title} image ${currentImage + 1}`;
       cpPieceTitle.textContent = piece.title;
+      cpPiecePrice.textContent = piece.price;
       cpPieceText.textContent = piece.text;
-      cpImageNote.textContent = image.note;
-
-      pieceButtons.forEach((btn, i) => {
-        btn.classList.toggle("active", i === currentPiece);
-      });
+      cpEditorialText.textContent = sharedEditorialText;
 
       cpThumbs.innerHTML = "";
 
-      piece.images.forEach((img, i) => {
+      piece.images.forEach((src, i) => {
         const button = document.createElement("button");
         button.className = "cp-thumb" + (i === currentImage ? " active" : "");
-        button.innerHTML = '<img src="' + img.src + '" alt="' + piece.title + ' thumbnail">';
+        button.type = "button";
+        button.innerHTML = `<img src="${src}" alt="${piece.title} thumbnail ${i + 1}">`;
         button.addEventListener("click", () => {
           renderPiece(currentPiece, i);
         });
         cpThumbs.appendChild(button);
       });
-    }
 
-    pieceButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        renderPiece(Number(btn.dataset.piece), 0);
-      });
-    });
+      renderGrid();
+    }
 
     document.getElementById("cpPrevBtn").addEventListener("click", () => {
       const piece = pieces[currentPiece];
